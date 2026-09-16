@@ -18,4 +18,4 @@ RUN mkdir -p db runtime && chmod -R 777 db runtime
 ENV PORT=10000
 EXPOSE 10000
 
-CMD php -S 0.0.0.0:${PORT} -t public
+CMD php -d display_errors=1 -d error_reporting=E_ALL -S 0.0.0.0:${PORT} -t public
