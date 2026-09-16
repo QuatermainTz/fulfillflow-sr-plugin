@@ -9,6 +9,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
+RUN cp example.env .env
 RUN composer install --no-dev --optimize-autoloader
 
 RUN mkdir -p db runtime && chmod -R 777 db runtime
