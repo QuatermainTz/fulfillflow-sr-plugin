@@ -1,0 +1,15 @@
+{
+  "name": "myvendor/fulfillflow-sr-plugin",
+  "type": "project",
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*",
+    "salesrender/plugin-core-logistic": "^0.10",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MyVendor\\Plugin\\FulfillFlow\\": "src/"
+    }
+  }
+}
