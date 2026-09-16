@@ -37,6 +37,7 @@ Info::config(
     [
         'class' => LogisticPluginClass::CLASS_DELIVERY,
         'entity' => PluginEntity::ENTITY_ORDER,
+        'currency' => ['NGN'],
     ],
     new Developer(
         'Your Company',
