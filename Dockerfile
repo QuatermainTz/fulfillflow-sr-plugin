@@ -1,9 +1,8 @@
-FROM php:7.4-cli
+FROM php:7.4-cli-alpine
 
-RUN apt-get update && apt-get install -y \
-    unzip git libsqlite3-dev \
-    && docker-php-ext-install pdo pdo_sqlite \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+        unzip git sqlite-dev \
+    && docker-php-ext-install pdo pdo_sqlite
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
