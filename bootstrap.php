@@ -38,6 +38,8 @@ Info::config(
         'class' => LogisticPluginClass::CLASS_DELIVERY,
         'entity' => PluginEntity::ENTITY_ORDER,
         'currency' => ['TZS'],
+        'codename' => 'FULFILLFLOW_COURIER',
+
     ],
     new Developer(
         'Your Company',
