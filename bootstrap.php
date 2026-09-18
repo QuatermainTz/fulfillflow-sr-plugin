@@ -10,12 +10,15 @@ use SalesRender\Plugin\Components\Settings\Settings;
 use SalesRender\Plugin\Components\Translations\Translator;
 use SalesRender\Plugin\Core\Logistic\Components\Waybill\WaybillContainer;
 use SalesRender\Plugin\Core\Logistic\Components\Actions\Shipping\ShippingContainer;
+use SalesRender\Plugin\Components\Batch\BatchContainer;
 use Medoo\Medoo;
 use MyVendor\Plugin\FulfillFlow\Forms\SettingsForm;
 use MyVendor\Plugin\FulfillFlow\Forms\WaybillForm;
 use MyVendor\Plugin\FulfillFlow\Waybill\WaybillHandler;
 use MyVendor\Plugin\FulfillFlow\Actions\CancelAction;
 use MyVendor\Plugin\FulfillFlow\Actions\RemoveOrdersAction;
+use MyVendor\Plugin\FulfillFlow\Batch\Batch_1;
+use MyVendor\Plugin\FulfillFlow\Batch\BatchShippingHandler;
 use XAKEPEHOK\Path\Path;
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -39,7 +42,6 @@ Info::config(
         'entity' => PluginEntity::ENTITY_ORDER,
         'currency' => ['TZS'],
         'codename' => 'FULFILLFLOW_COURIER',
-
     ],
     new Developer(
         'Your Company',
@@ -62,4 +64,15 @@ WaybillContainer::config(
 ShippingContainer::config(
     new CancelAction(),
     new RemoveOrdersAction()
+);
+
+// 7. Batch action - "Send to FulfillFlow" from the order list
+BatchContainer::config(
+    function (int $number) {
+        switch ($number) {
+            case 1: return new Batch_1();
+            default: return null;
+        }
+    },
+    new BatchShippingHandler()
 );
