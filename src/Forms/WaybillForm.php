@@ -26,7 +26,7 @@ class WaybillForm extends Form
                         'productSku' => new StringDefinition('Product SKU', 'FulfillFlow product_sku', $nonEmpty),
                         'warehouseName' => new StringDefinition('Warehouse', 'FulfillFlow warehouse_name', $nonEmpty),
                         'quantity' => new IntegerDefinition('Quantity', 'Number of units', $nonEmpty),
-                        'shippingCharges' => new IntegerDefinition('Shipping charges', 'Delivery fee', null),
+                        'shippingCharges' => new NumberDefinition('Shipping charges', 'Delivery fee', function () { return []; }),
                     ]
                 ),
             ],
