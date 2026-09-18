@@ -23,6 +23,10 @@ use XAKEPEHOK\Path\Path;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+error_log('[FF-DEBUG] Client.php exists on disk: ' . (file_exists(__DIR__ . '/src/FulfillFlow/Client.php') ? 'yes' : 'no'));
+error_log('[FF-DEBUG] class_exists check: ' . (class_exists('MyVendor\\Plugin\\FulfillFlow\\Client') ? 'yes' : 'no'));
+error_log('[FF-DEBUG] src/FulfillFlow contents: ' . implode(', ', glob(__DIR__ . '/src/FulfillFlow/*') ?: ['(empty or missing)']));
+
 // 1. Database (SQLite file, db/ directory must be writable)
 Connector::config(new Medoo([
     'database_type' => 'sqlite',
