@@ -60,7 +60,7 @@ Settings::setForm(fn() => new SettingsForm());
 // 5. Waybill form + handler - called when an order is approved and a
 //    shipment needs to be created with FulfillFlow
 WaybillContainer::config(
-    fn(array $context = []) => new WaybillForm(),
+    fn(array $context = []) => new WaybillForm($context),
     new WaybillHandler()
 );
 
