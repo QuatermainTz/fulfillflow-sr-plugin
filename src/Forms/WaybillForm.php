@@ -15,6 +15,10 @@ class WaybillForm extends Form
             return empty($value) ? ['Field cannot be empty'] : [];
         };
 
+        $optional = function ($value) {
+            return [];
+        };
+
         $orderData = $context['data'] ?? [];
 
         $recipientName = '';
@@ -52,8 +56,8 @@ class WaybillForm extends Form
                         'warehouseName'   => new StringDefinition('Warehouse', 'FulfillFlow warehouse_name', $nonEmpty),
                         'quantity'        => new IntegerDefinition('Quantity', 'Number of units', $nonEmpty),
                         'orderAmount'     => new IntegerDefinition('Order amount', 'Total order value (TZS)', $nonEmpty),
-                        'shippingCharges' => new IntegerDefinition('Shipping charges', 'Delivery fee', null),
-                        'referenceId'     => new StringDefinition('Reference ID', 'Your internal order reference', null),
+                        'shippingCharges' => new IntegerDefinition('Shipping charges', 'Delivery fee', $optional),
+                        'referenceId'     => new StringDefinition('Reference ID', 'Your internal order reference', $optional),
                     ]
                 ),
             ],
